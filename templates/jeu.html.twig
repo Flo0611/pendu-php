@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Jeu{% endblock %}
+
+{% block style %}
+    <style>
+        .disabled{text-decoration: line-through}
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h1>Jeu</h1>
+    <div>
+        <h2>Coups restant : {{ coupsRestants }}</h2>
+        <img src="{{ lienRacine }}/public/img/pendu-{{ essais }}-{{ level }}.png">
+    </div>
+    <div style="font-size: 2em">
+        {% for lettre in lettresTrouvees %}
+            {{ lettre|raw }}
+        {% endfor %}
+    </div>
+    <div>
+        {% for lettre in lettres %}
+            {% set class = '' %}
+            {% if lettre in lettresUtilisees %}
+                {% set class = 'disabled text-muted' %}
+            {% endif %}
+            <a href="{{ lienRacine }}/src/Controller/Routeur.php?action=jeu&lettre={{ lettre }}" class="{{ class }}" >{{ lettre }}</a>
+        {% endfor %}
+    </div>
+{% endblock %}

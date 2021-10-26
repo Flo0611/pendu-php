@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Partie terminé{% endblock %}
+
+{% block body %}
+        <h1>Fin de partie</h1>
+
+        <h2>{{ statut }}</h2>
+
+        <a href="{{ lienRacine }}/src/Controller/Routeur.php?action=new-partie" class="btn btn-large btn-primary">Recommencer une partie</a>
+{% endblock %}

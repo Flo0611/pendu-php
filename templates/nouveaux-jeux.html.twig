@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau jeu{% endblock %}
+
+{% block body %}
+    <h1>Nouvelle partie</h1>
+    <form action="{{ lienRacine }}/src/Controller/Routeur.php?action=nouvelle-partie" method="POST">
+        <div class="form-group">
+            <label for="nouveau-mot">Choix du mot</label>
+            <input type="text" class="form-control" id="nouveau-mot" name="mot" placeholder="Choix du mot">
+            <small id="emailHelp" class="form-text text-muted">Le maitre du jeu désigne un nouveau mot à l'abris des regards</small>
+            {% if error is defined %}
+                <p class="text-danger">Veuillez rentrer un mot pour commencer à jouer.</p>
+            {% endif %}
+        </div>
+        <select name="level" style="margin-bottom:3%;width: 25%">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+        </select>
+        <br>
+        <button type="submit" class="btn btn-primary">Valider</button>
+        <button type="submit" name="bot" class="btn btn-warning">Jouer contre l'ordinateur</button>
+    </form>
+{% endblock %}
